@@ -1,0 +1,9 @@
+[user]
+	email = calsrose@gmail.com
+	name = Calvin Rose
+[core]
+	editor = vim
+[credential]
+	store = store
+[alias]
+	ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
