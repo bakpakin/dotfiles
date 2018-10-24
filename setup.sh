@@ -18,6 +18,7 @@ cp .inputrc "$HOME/.inputrc"
 cp .vimrc "$HOME/.vimrc"
 cp ".functions" "$HOME/.functions"
 cp ".fff" "$HOME/.fff"
+chmod +x "$HOME/.fff"
 mkdir -p "$HOME/.ssh"
 cp ".ssh/config" "$HOME/.ssh/config"
 
