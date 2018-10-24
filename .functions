@@ -42,6 +42,13 @@ function extract() {
 	fi
 }
 
+# Make a tarball from anything
+tarball() {
+    [ -n "$1" ] && {printf 'Usage: tarball indir out.tar.gz'; exit -1}
+    [ -n "$2" ] && {printf 'Usage: tarball indir out.tar.gz'; exit -1}
+    tar -zcvf "$2" -C "$1" .
+}
+
 # animated gifs from any video
 # from alex sexton   gist.github.com/SlexAxton/4989674
 gifify() {
