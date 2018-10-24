@@ -61,6 +61,9 @@ alias g='git'
 alias gti='git'
 alias v='vim'
 
+alias f=fff
+alias ff=fff
+
 alias reload='source "$HOME/.bashrc"'
 
 # Undo a `git push`

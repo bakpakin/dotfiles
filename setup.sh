@@ -8,6 +8,7 @@ mkdir -p "$BACKUP"
 [ -x "$HOME/.inputrc" ] && mv "$HOME/.inputrc" "$BACKUP"
 [ -x "$HOME/.vimrc" ] && mv "$HOME/.vimrc" "$BACKUP"
 [ -x "$HOME/.functions" ] && mv "$HOME/.functions" "$BACKUP"
+[ -x "$HOME/.fff" ] && mv "$HOME/.fff" "$BACKUP"
 [ -x "$HOME/.ssh/config" ] && mv "$HOME/.ssh/config" "$BACKUP"
 
 # Set up dotfiles on a machine
@@ -16,6 +17,7 @@ cp .tmux.conf "$HOME/.tmux.conf"
 cp .inputrc "$HOME/.inputrc"
 cp .vimrc "$HOME/.vimrc"
 cp ".functions" "$HOME/.functions"
+cp ".fff" "$HOME/.fff"
 mkdir -p "$HOME/.ssh"
 cp ".ssh/config" "$HOME/.ssh/config"
 

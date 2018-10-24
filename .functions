@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Create a new directory and enter it
 function md() {
 	mkdir -p "$@" && cd "$@"
@@ -54,4 +56,9 @@ gifify() {
   else
 	echo "proper usage: gifify <input_movie.mov>. You DO need to include extension."
   fi
+}
+
+# Fast filemanager
+fff() {
+    "$HOME/.fff" "$@"
 }
