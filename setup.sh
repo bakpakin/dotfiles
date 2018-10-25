@@ -25,3 +25,6 @@ cp ".ssh/config" "$HOME/.ssh/config"
 # Install VimPlug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# Source new bashrc if needed
+source "$HOME/.bashrc"

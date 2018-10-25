@@ -44,9 +44,12 @@ function extract() {
 
 # Make a tarball from anything
 tarball() {
-    [ -n "$1" ] && {printf 'Usage: tarball indir out.tar.gz'; return -1}
-    [ -n "$2" ] && {printf 'Usage: tarball indir out.tar.gz'return -1}
-    tar -zcvf "$2" -C "$1" .
+    if [[ -n "$1" && -n "$2" ]]; then
+        tar -zcvf "$2" -C "$1" .
+    else
+        echo 'Usage: tarball indir out.tar.gz'
+        return 1
+    fi
 }
 
 # animated gifs from any video
