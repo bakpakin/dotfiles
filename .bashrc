@@ -73,6 +73,3 @@ alias undopush="git push -f origin HEAD^:master"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 source "$HOME/.functions"
-
-# Show message
-date

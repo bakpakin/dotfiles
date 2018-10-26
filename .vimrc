@@ -3,12 +3,10 @@ set nocompatible
 filetype off
 
 call plug#begin('~/.vim/plugged')
-Plug 'SirVer/ultisnips'
 Plug 'bakpakin/ats2.vim'
 Plug 'bakpakin/janet.vim'
 Plug 'fatih/vim-go'
 Plug 'flazz/vim-colorschemes'
-Plug 'honza/vim-snippets'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'luochen1990/rainbow'
