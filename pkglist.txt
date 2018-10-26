@@ -5,6 +5,9 @@ luajit
 nodejs
 openssh
 pass
+pinentry
+python
+python2
 sudo
 sway
 texlive-core

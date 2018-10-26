@@ -72,3 +72,9 @@ gifify() {
 fff() {
     "$HOME/.fff" "$@"
 }
+
+# Start sway wm
+runsway() {
+    mkdir -p ~/.logs/sway/
+    sway -d &> ~/.logs/sway/sway.log
+}
