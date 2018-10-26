@@ -4,6 +4,7 @@ htop
 luajit
 nodejs
 openssh
+pass
 sudo
 sway
 texlive-core
