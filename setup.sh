@@ -1,30 +1,19 @@
 #!/bin/bash
 
-# Make backup
-BACKUP="$HOME/dotfile-backup"
-mkdir -p "$BACKUP"
-[ -x "$HOME/.tmuc.conf" ] && mv "$HOME/.bashrc" "$BACKUP"
-[ -x "$HOME/.tmux.conf" ] && mv "$HOME/.tmux.conf" "$BACKUP"
-[ -x "$HOME/.inputrc" ] && mv "$HOME/.inputrc" "$BACKUP"
-[ -x "$HOME/.vimrc" ] && mv "$HOME/.vimrc" "$BACKUP"
-[ -x "$HOME/.functions" ] && mv "$HOME/.functions" "$BACKUP"
-[ -x "$HOME/.fff" ] && mv "$HOME/.fff" "$BACKUP"
-[ -x "$HOME/.gitconfig" ] && mv "$HOME/.gitconfig" "$BACKUP"
-[ -x "$HOME/.Xresources" ] && mv "$HOME/.fff" "$BACKUP"
-[ -x "$HOME/.ssh/config" ] && mv "$HOME/.ssh/config" "$BACKUP"
-
-# Set up dotfiles on a machine
+# Univeral setup
 cp .bashrc "$HOME/.bashrc"
 cp .tmux.conf "$HOME/.tmux.conf"
 cp .inputrc "$HOME/.inputrc"
 cp .vimrc "$HOME/.vimrc"
 cp .gitconfig "$HOME/.gitconfig"
 cp ".functions" "$HOME/.functions"
-cp ".fff" "$HOME/.fff"
-cp ".Xresources" "$HOME/.Xresources"
-chmod +x "$HOME/.fff"
-mkdir -p "$HOME/.ssh"
-cp ".ssh/config" "$HOME/.ssh/config"
+cp .fff "$HOME/.fff"; chmod +x "$HOME/.fff"
+mkdir -p "$HOME/.ssh"; cp .ssh/config "$HOME/.ssh/config"
+
+# Linux (Arch)
+cp .Xresources "$HOME/.Xresources"
+cp .xinitrc "$HOME/.xinitrc"
+cp -r .config "$HOME/.config"
 
 # Install VimPlug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
