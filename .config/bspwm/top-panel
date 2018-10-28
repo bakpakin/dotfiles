@@ -1,0 +1,98 @@
+#!/bin/bash
+
+monitors () {
+    desktops=$(bspc query -D -m)
+    current=$(bspc query -D -d focused)
+    for d in $desktops; do
+        if [ "$d" = "$current" ]; then
+            echo -e -n "\u25cf "
+        else
+            echo -e -n "\u25cb "
+        fi
+    done
+}
+
+clock () {
+	DATE=$(date "+%m.%d.%y")
+	TIME=$(date "+%I:%M")
+	echo -e -n "\uf073 ${DATE} \uf017 ${TIME}"
+}
+
+wifi () {
+	WIFISTR=$( iwconfig wlp4s0 | grep "Link" | sed 's/ //g' | sed 's/LinkQuality=//g' | sed 's/\/.*//g')
+	if [ ! -z $WIFISTR ] ; then
+		WIFISTR=$(( ${WIFISTR} * 100 / 70))
+		ESSID=$(iwconfig wlp4s0 | grep ESSID | sed 's/ //g' | sed 's/.*://' | cut -d "\"" -f 2)
+		if [ $WIFISTR -ge 1 ] ; then
+			echo -e "\uf1eb ${ESSID} ${WIFISTR}%"
+		fi
+	fi
+}
+
+sound () {
+	NOTMUTED=$( amixer sget Master | grep "\[on\]" )
+	if [[ ! -z $NOTMUTED ]] ; then
+		VOL=$(awk -F"[][]" '/dB/ { print $2 }' <(amixer sget Master) | sed 's/%//g')
+		if [ $VOL -ge 85 ] ; then
+			echo -e "\uf028 ${VOL}%"
+		elif [ $VOL -ge 50 ] ; then
+			echo -e "\uf027 ${VOL}%"
+		else
+			echo -e "\uf026 ${VOL}%"
+		fi
+	else
+		echo -e "\uf026 M"
+	fi
+}
+
+title () {
+    xtitle $(bspc query -N -n)
+}
+
+# Event Emitters
+
+ticker () {
+    while true; do
+        echo 'T'
+        sleep 1
+    done
+}
+
+# Set up and run main loop
+
+EVENTS="$HOME/.fifos/panel_fifo"
+
+setup_events () {
+    mkdir -p "$HOME/.fifos"
+    [ -e "$EVENTS" ] && rm "$EVENTS"
+    mkfifo "$EVENTS"
+    ticker > "$EVENTS" &
+    bspc subscribe report > "$EVENTS" &
+}
+
+evloop () {
+    while read -r line ; do
+        echo -e "\
+%{r}$(wifi $line)  \
+%{A:amixer set Master toggle > $EVENTS:}\
+%{A4:amixer set Master playback 4+ > $EVENTS:}\
+%{A5:amixer set Master playback 4- > $EVENTS:}\
+$(sound $line)\
+%{A}%{A}%{A}  \
+$(clock $line)   \
+%{c}\
+$(monitors $line)\
+%{l}   \
+$(title $line)"
+    done
+}
+
+setup_events
+evloop < "$EVENTS" | lemonbar -g +0+10 -d -p \
+    -f 'DejaVu Sans Mono:size=11' \
+    -f 'FontAwesome:size=11' | bash &
+
+wait
+
+# Clean up
+rm "$EVENTS"

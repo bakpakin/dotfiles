@@ -20,7 +20,7 @@ super + Escape
 
 # quit bspwm normally
 super + alt + Escape
-	bspc quit
+	pkill panel; bspc quit
 
 # close and kill
 super + {_,shift + }w
@@ -119,3 +119,25 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+#
+# media keys
+#
+
+XF86AudioRaiseVolume
+    amixer set Master playback 4+
+
+XF86AudioLowerVolume
+    amixer set Master playback 4-
+
+XF86AudioMute
+    amixer set Master toggle
+
+XF86AudioPlay
+    echo "nyi"
+	
+XF86AudioNext
+    echo "nyi"
+
+XF86AudioPrev
+    echo "nyi"

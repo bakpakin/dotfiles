@@ -1,9 +1,13 @@
+alsa-plugins
 alsa-utils
 bspwm
 compton
+dialog
 firefox
 git
+gvim
 htop
+kakoune
 luajit
 nodejs
 nvidia
@@ -11,8 +15,10 @@ openssh
 pass
 picocom
 pinentry
+pygmentize
 python
 python2
+screenfetch
 sudo
 sxhkd
 termite
@@ -20,9 +26,9 @@ texlive-core
 tmux
 ttf-dejavu
 ttf-font-awesome
-vim
 vlc
 wpa_supplicant
+xdo
 xorg-xrdb
 xsel
 zathura
