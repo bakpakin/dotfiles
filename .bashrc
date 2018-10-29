@@ -72,4 +72,8 @@ alias undopush="git push -f origin HEAD^:master"
 # For FZF
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# Use bash-completion, if available
+[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
+    . /usr/share/bash-completion/bash_completion
+
 source "$HOME/.functions"
