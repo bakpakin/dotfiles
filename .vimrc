@@ -6,7 +6,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'bakpakin/ats2.vim'
 Plug 'bakpakin/janet.vim'
 Plug 'fatih/vim-go'
-Plug 'flazz/vim-colorschemes'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'luochen1990/rainbow'
@@ -34,10 +33,6 @@ nmap <leader>ww :let @/ = ""<CR>
 nmap <leader>v :e $MYVIMRC<CR>
 nmap <leader>sv :so $MYVIMRC<CR>
 nmap <leader>h :help<CR>
-
-" Colors
-colorscheme molokai
-highlight Comment ctermfg=DarkGray
 
 " Basic Vim Setup
 set mouse=a
