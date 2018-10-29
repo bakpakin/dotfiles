@@ -1,6 +1,6 @@
 [options]
 font = xos4 Terminus 12px
-font = DehaVu Sans Mono 11
+font = DejaVu Sans Mono 11
 
 [colors]
 
@@ -8,7 +8,7 @@ font = DehaVu Sans Mono 11
 foreground      = #c5c8c6
 foreground_bold = #c5c8c6
 cursor          = #c5c8c6
-background      = rgba(22,22,22,0.6)
+background      = rgba(22,22,22,0.8)
 
 # black
 color0  = #282a2e
