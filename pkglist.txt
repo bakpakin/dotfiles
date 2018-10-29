@@ -18,6 +18,7 @@ pinentry
 pygmentize
 python
 python2
+rofi
 screenfetch
 sudo
 sxhkd

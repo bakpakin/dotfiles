@@ -9,7 +9,7 @@ sxhkd &
 compton &
 
 for monitor in $(bspc query -M); do
-    bspc monitor $monitor -d A B C D E F
+    bspc monitor $monitor -d A B C D
 done
 
 bspc config border_width         2
@@ -21,10 +21,10 @@ bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
 # Background
-feh --bg-fill ~/images/firewatch-night.jpg
+feh --bg-fill "$DIR/firewatch-night.jpg"
 
 # Panels
 "$DIR/top-panel" &
 
 # Start a terminal
-termite -e screenfetch &
+termite &

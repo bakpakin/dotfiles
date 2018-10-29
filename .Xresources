@@ -27,7 +27,7 @@ URxvt*scrollBar: false
 
 ! Generic colors setup
 *.foreground: base05
-*.background: rgba:0000/0000/0000/c800
+*.background: base00
 *.depth: 32 
 *.cursorColor: base05
 *.cursorColor2: base05

@@ -13,7 +13,8 @@ mkdir -p "$HOME/.ssh"; cp .ssh/config "$HOME/.ssh/config"
 # Linux (Arch)
 cp .Xresources "$HOME/.Xresources"
 cp .xinitrc "$HOME/.xinitrc"
-cp -r .config "$HOME/.config"
+mkdir -p "$HOME/.config"
+cp -r .config/* "$HOME/.config"
 
 # Install VimPlug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
