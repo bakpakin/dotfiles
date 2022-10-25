@@ -11,7 +11,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'luochen1990/rainbow'
 Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-surround'
@@ -89,11 +88,16 @@ augroup fzf_config
 augroup END
 " }}}
 
-" Nerdtree {{{
-augroup nerdtree_config
+" nvim-tree {{{
+augroup nvimtree_config
   autocmd!
-  map <leader>p :NERDTreeToggle<CR>
-  map <leader>o :NERDTree<CR>
+:lua <<LUA
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+require("nvim-tree").setup({})
+LUA
+  map <leader>p :NvimTreeToggle<CR>
+  map <leader>o :NvimTreeFocus<CR>
 augroup END
 " }}}
 
