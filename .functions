@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Create a new directory and enter it
-function md() {
+md () {
 	mkdir -p "$@" && cd "$@"
 }
 
 # Extract archives - use: extract <file>
 # Based on http://dotfiles.org/~pseup/.bashrc
-function extract() {
+extract () {
 	if [ -f "$1" ] ; then
 		local filename=$(basename "$1")
 		local foldername="${filename%%.*}"
@@ -43,7 +43,7 @@ function extract() {
 }
 
 # Make a tarball from anything
-tarball() {
+tarball () {
     if [[ -n "$1" && -n "$2" ]]; then
         tar -zcvf "$2" -C "$1" .
     else
@@ -52,29 +52,28 @@ tarball() {
     fi
 }
 
-# animated gifs from any video
-# from alex sexton   gist.github.com/SlexAxton/4989674
-gifify() {
-  if [[ -n "$1" ]]; then
-	if [[ $2 == '--good' ]]; then
-	  ffmpeg -i "$1" -r 10 -vcodec png out-static-%05d.png
-	  time convert -verbose +dither -layers Optimize -resize 900x900\> out-static*.png  GIF:- | gifsicle --colors 128 --delay=5 --loop --optimize=3 --multifile - > "$1.gif"
-	  rm out-static*.png
-	else
-	  ffmpeg -i "$1" -s 600x400 -pix_fmt rgb24 -r 10 -f gif - | gifsicle --optimize=3 --delay=3 > "$1.gif"
-	fi
-  else
-	echo "proper usage: gifify <input_movie.mov>. You DO need to include extension."
-  fi
+# Install a package from the AUR
+aur_get () {
+    URL="https://aur.archlinux.org/$1.git"
+    mkdir -p ./aur_temp
+    if test -e "./aur_temp/$1"; then
+        cd "./aur_temp/$1"
+        git pull --ff-only
+    else
+        git clone "$URL" "./aur_temp/$1"
+        cd "./aur_temp/$1"
+    fi
+    makepkg
+    sudo pacman -U *.pkg.tar.zst
+    cd ../..
 }
 
-# Fast filemanager
-fff() {
-    "$HOME/.fff" "$@"
-}
-
-# Start sway wm
-runsway() {
-    mkdir -p ~/.logs/sway/
-    sway -d &> ~/.logs/sway/sway.log
+# Install a list of packages
+install_pkglist () {
+    if [ -f "/etc/arch-release" ]; then
+        # Install official arch packages
+        pacman -Syyu $(cat "$1" | tr '\n' ' ') --noconfirm
+    else
+        echo "Don't know how to install packages on this system."
+    fi
 }

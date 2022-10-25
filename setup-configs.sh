@@ -9,6 +9,7 @@ link_dot () {
 link_dot .bashrc
 link_dot .tmux.conf
 link_dot .inputrc
+link_dot .functions
 link_dot .vimrc
 link_dot .gitconfig
 link_dot .config/nvim/init.vim
