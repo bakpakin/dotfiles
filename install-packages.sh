@@ -11,9 +11,6 @@ if [ -f "/etc/arch-release" ]; then
     makepkg -si
     popd
     rm -rf "$yaydir"
-
-    # Install aur packages
-    yay -Syyu $(cat ./yay.txt | tr '\n' ' ') --noconfirm
 else
     echo "Don't know how to install packages on this system."
 fi

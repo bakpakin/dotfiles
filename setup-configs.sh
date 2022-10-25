@@ -1,20 +1,15 @@
 #!/bin/bash
 
-# Univeral setup
-cp .bashrc "$HOME/.bashrc"
-cp .tmux.conf "$HOME/.tmux.conf"
-cp .inputrc "$HOME/.inputrc"
-cp .vimrc "$HOME/.vimrc"
-cp .gitconfig "$HOME/.gitconfig"
-cp ".functions" "$HOME/.functions"
-cp .fff "$HOME/.fff"; chmod +x "$HOME/.fff"
-mkdir -p "$HOME/.ssh"; cp .ssh/config "$HOME/.ssh/config"
+link_dot () {
+    ln -s "$(pwd)/$1" "$HOME/$1"
+}
 
-# Linux (Arch)
-cp .Xresources "$HOME/.Xresources"
-cp .xinitrc "$HOME/.xinitrc"
-mkdir -p "$HOME/.config"
-cp -r .config/* "$HOME/.config"
+# Univeral setup
+link_dot .bashrc
+link_dot .tmux.conf
+link_dot .inputrc
+link_dot .vimrc
+link_dor .gitconfig
 
 # Install VimPlug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \

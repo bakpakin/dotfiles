@@ -1,4 +1,0 @@
-lemonbar-xft-git
-spotify
-xtitle
-
