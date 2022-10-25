@@ -2,7 +2,7 @@
 	email = calsrose@gmail.com
 	name = Calvin Rose
 [core]
-	editor = vim
+	editor = nvim
 [credential]
 	store = store
 [alias]
