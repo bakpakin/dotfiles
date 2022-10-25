@@ -20,6 +20,7 @@ linux-firmware
 m4
 make
 man-db
+neovim
 nvidia-open
 openssh
 pacman-contrib
@@ -29,6 +30,5 @@ strace
 sudo
 sway
 texinfo
-vim
 which
 whois

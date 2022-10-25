@@ -4,6 +4,9 @@ case $- in
       *) return;;
 esac
 
+# Use neovim
+export EDITOR=nvim
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -59,10 +62,9 @@ alias .....='cd ../../../..'
 
 alias g='git'
 alias gti='git'
-alias v='vim'
-
-alias f=fff
-alias ff=fff
+alias v='nvim'
+alias vim='nvim'
+alias vi='nvim'
 
 alias reload='source "$HOME/.bashrc"'
 
@@ -75,5 +77,3 @@ alias undopush="git push -f origin HEAD^:master"
 # Use bash-completion, if available
 [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
     . /usr/share/bash-completion/bash_completion
-
-source "$HOME/.functions"

@@ -5,7 +5,7 @@ filetype off
 call plug#begin('~/.vim/plugged')
 Plug 'bakpakin/ats2.vim'
 Plug 'bakpakin/janet.vim'
-Plug 'fatih/vim-go'
+Plug 'bakpakin/fennel.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'luochen1990/rainbow'
@@ -15,7 +15,10 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-surround'
-Plug 'vim-syntastic/syntastic'
+Plug 'Olical/conjure'
+Plug 'Olical/aniseed'
+Plug 'nvim-tree/nvim-tree.lua'
+Plug 'vim-airline/vim-airline'
 call plug#end()
 
 filetype plugin indent on
@@ -102,17 +105,3 @@ augroup rainbow_config
   nnoremap <leader>rp :RainbowToggle<CR>
 augroup END
 " }}}
-
-" Syntastic.vim {{{
-augroup syntastic_config
-  autocmd!
-  set statusline+=%#warningmsg#
-  set statusline+=%{SyntasticStatuslineFlag()}
-  set statusline+=%*
-  let g:syntastic_always_populate_loc_list = 1
-  let g:syntastic_auto_loc_list = 1
-  let g:syntastic_check_on_open = 1
-  let g:syntastic_check_on_wq = 0
-augroup END
-" }}}
-
