@@ -1,18 +1,21 @@
 # Read `man 5 sway` for a complete reference.
+
+### Variables
 set $mod Mod4
 set $left h
 set $down j
 set $up k
 set $right l
 set $term foot
-
 set $menu bemenu-run | xargs swaymsg exec --
 
+### Appearance
 output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+default_border pixel 2
 
 ### Key bindings
 bindsym $mod+Return exec $term
-bindsym $mod+Shift+w kill
+bindsym $mod+w kill
 bindsym $mod+d exec $menu
 floating_modifier $mod normal
 bindsym $mod+Shift+c reload
@@ -60,23 +63,19 @@ bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 bindsym $mod+b splith
 bindsym $mod+v splitv
-
-# Switch the current container between different layout styles
+# Volume
+bindsym XF86AudioMute exec amixer set Master toggle
+bindsym XF86AudioRaiseVolume exec amixer set Master 10%+
+bindsym XF86AudioLowerVolume exec amixer set Master 10%-
+# Layout stuff
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
-
-# Make the current focus fullscreen
 bindsym $mod+f fullscreen
-
-# Toggle the current focus between tiling and floating mode
 bindsym $mod+Shift+space floating toggle
-
-# Swap focus between the tiling area and the floating area
 bindsym $mod+space focus mode_toggle
-
-# Move focus to the parent container
 bindsym $mod+a focus parent
+
 #
 # Scratchpad:
 #
@@ -89,6 +88,7 @@ bindsym $mod+Shift+minus move scratchpad
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
+
 #
 # Resizing containers:
 #

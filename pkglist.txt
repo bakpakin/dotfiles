@@ -1,3 +1,4 @@
+alsa-utils
 astyle
 autoconf
 automake
