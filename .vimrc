@@ -18,6 +18,7 @@ Plug 'Olical/conjure'
 Plug 'Olical/aniseed'
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'vim-airline/vim-airline'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 filetype plugin indent on
